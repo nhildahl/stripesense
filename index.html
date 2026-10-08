@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stripe Sense · AI dial-in, throttle stop and delay box predictor</title>
+<meta name="description" content="AI-driven dial-in, throttle stop and delay box predictions that learn your car from your own runs and weather station. For Windows.">
+<link rel="canonical" href="https://nhildahl.github.io/stripesense/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nhildahl.github.io/stripesense/">
+<meta property="og:title" content="Stripe Sense: AI-driven dial-in and throttle stop">
+<meta property="og:description" content="AI that learns your car from your own runs and weather station, then gives you the dial-in, throttle stop and delay box.">
+<meta property="og:image" content="https://nhildahl.github.io/stripesense/img/lanes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0f14">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="icon" href="img/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/icon-256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b0f14;--bg2:#10161d;--panel:#151c24;--line:#25303b;--ink:#eaf0f5;--mute:#93a1ad;
+  --acc:#3aaeea;--acc-ink:#04131d;--num:#ffd23f;--good:#3ccf7d;
+  --r:14px;--wrap:1160px;
+  --disp:"Barlow Condensed","Segoe UI",system-ui,sans-serif;
+  --body:"Barlow","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:72px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--acc)}
+:focus-visible{outline:3px solid var(--num);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--disp);letter-spacing:.01em;line-height:1.05;margin:0}
+h2{font-size:clamp(32px,4vw,44px);text-transform:uppercase;text-wrap:balance}
+h3{font-size:22px;text-transform:uppercase}
+p{margin:0 0 1em;text-wrap:pretty}
+.mute{color:var(--mute)}
+.kicker{font:700 14px/1 var(--disp);letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.checker{height:12px;background:
+  linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%) 0 0/12px 12px,
+  linear-gradient(45deg,#fff 25%,#0b0f14 25%,#0b0f14 75%,#fff 75%) 6px 6px/12px 12px;opacity:.9}
+
+/* top bar */
+header.top{position:sticky;top:0;z-index:20;background:rgba(11,15,20,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--ink);font:800 24px/1 var(--disp);letter-spacing:.06em}
+.brand img{width:34px;height:34px;border-radius:8px}
+.brand span{color:var(--acc)}
+.top nav{margin-left:auto;display:flex;gap:22px}
+.top nav a{padding:14px 0;color:var(--mute);text-decoration:none;font:600 15px/1 var(--disp);letter-spacing:.1em;text-transform:uppercase}
+.top nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:10px;font:700 18px/1 var(--disp);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--panel);cursor:pointer;white-space:nowrap}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.btn.pri:hover{filter:brightness(1.08)}
+.btn:hover{border-color:var(--acc)}
+.top .btn{padding:13px 16px;font-size:15px}
+
+/* hero */
+.hero{overflow:hidden;padding:44px 0 44px;background:
+  radial-gradient(900px 420px at 78% 10%,rgba(58,174,234,.16),transparent 70%),
+  radial-gradient(700px 380px at 10% 90%,rgba(255,210,63,.08),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:.95fr 1.1fr;gap:44px;align-items:center}
+.hero h1{font-size:clamp(40px,4.8vw,66px);text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--num)}
+.hero .lede{font-size:19px;color:#c9d4dd;max-width:34em;margin:18px 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.fine{font-size:14px;color:var(--mute);margin:14px 0 0}
+.shot{border-radius:var(--r);border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+section{padding:52px 0}
+.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.head{max-width:720px;margin-bottom:26px}
+.head p{font-size:18px;color:#c3cdd6;margin:12px 0 0}
+
+/* four feature tiles, then a plain paragraph */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.tile h3{font-size:21px;margin-bottom:8px}
+.tile p{color:#c3cdd6;margin:0;font-size:15.5px;line-height:1.45}
+.tag{display:inline-block;align-self:flex-start;font:700 13px/1 var(--disp);letter-spacing:.12em;text-transform:uppercase;padding:5px 8px;border-radius:6px;background:rgba(58,174,234,.14);color:var(--acc);margin-bottom:10px}
+.tag.soon{background:rgba(255,210,63,.12);color:var(--num)}
+.also{margin:22px 0 0;color:#c3cdd6;font-size:16px;max-width:60em}
+.also b{color:var(--ink)}
+
+/* two screenshots */
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+.shots figure{margin:0}
+.shots figcaption{margin-top:10px;font:600 15px/1.3 var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.shots figcaption b{color:var(--ink)}
+
+/* pager band */
+.pband{display:grid;grid-template-columns:1.1fr .8fr 1fr;gap:36px;align-items:center}
+.pband h2{font-size:clamp(30px,3.6vw,40px);margin-bottom:12px}
+.pband ul{list-style:none;margin:14px 0 0;padding:0}
+.pband li{position:relative;padding-left:24px;margin:8px 0;color:#c9d4dd}
+.pband li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:3px;background:var(--acc);border-radius:2px}
+.pager{justify-self:center;display:flex;flex-direction:column;align-items:center;width:100%;max-width:290px}
+.pager-ant{width:12px;height:56px;background:linear-gradient(90deg,#1b1f24,#3a414a,#1b1f24);border-radius:6px 6px 2px 2px;margin-left:62%;margin-bottom:-7px}
+.pager-body{width:100%;background:linear-gradient(160deg,#2c333c,#171b20);border-radius:26px;padding:22px 20px 18px;box-shadow:0 26px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08);border:1px solid #39424c}
+.pager-screen{background:#05080a;border-radius:10px;padding:12px 12px 14px;border:2px solid #0e1418;box-shadow:inset 0 0 18px rgba(58,174,234,.12)}
+.pager-screen pre{margin:0;font:700 clamp(14px,1.6vw,17px)/1.5 ui-monospace,Consolas,monospace;color:#e9f6ff;text-shadow:0 0 8px rgba(94,200,255,.35);white-space:pre}
+.pager-btn{width:42px;height:9px;border-radius:5px;background:#0f1216;margin:14px auto 0;box-shadow:inset 0 1px 2px rgba(0,0,0,.8)}
+.pager-cap{margin-top:12px;font:600 12px/1 var(--disp);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.kit{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--num);border-radius:var(--r);padding:22px 24px}
+.kit h3{font-size:26px;margin:2px 0 8px}
+.kit-price b{font:800 42px/1 var(--disp);color:var(--num);margin-right:8px}
+.kit-price span{color:var(--mute);font-size:14px}
+.kit ul{margin:12px 0 0}
+.kit li::before{content:"✓";background:none;width:auto;height:auto;top:0;color:var(--good);font-weight:700}
+
+/* get it */
+.get{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px}
+.get h3{font-size:30px;margin-bottom:8px}
+.get p{color:#c3cdd6;margin:0 0 16px}
+.get .others p{margin:0 0 10px;font-size:16px}
+.get .small{font-size:14px;color:var(--mute);margin:0}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line);padding:2px 0}
+summary{cursor:pointer;list-style:none;padding:14px 36px 14px 0;position:relative;font:700 21px/1.25 var(--disp);letter-spacing:.02em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:8px;font-size:28px;color:var(--acc)}
+details[open] summary::after{content:"–"}
+details p{color:#c3cdd6;margin:0 0 16px;max-width:52em;font-size:16px}
+
+footer{padding:30px 0 44px;color:var(--mute);font-size:13.5px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between}
+footer p{margin:0;max-width:640px}
+
+@media (max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px}
+  .tiles{grid-template-columns:1fr 1fr}
+  .pband{grid-template-columns:1fr;gap:26px}
+  .get{grid-template-columns:minmax(0,1fr)}
+  .top nav{display:none}
+  .top .btn{margin-left:auto}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  section{padding:40px 0}
+  .tiles{grid-template-columns:1fr}
+  .hero{padding:34px 0 38px}
+  .hero .lede{font-size:17px}
+  .brand{font-size:21px}
+  .top .btn{display:none}
+  .shots{display:none}
+  .pager{display:none}
+  .get{padding:22px 20px}
+  .get .btn{white-space:normal;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/icon.svg" alt="">STRIPE <span>SENSE</span></a>
+    <nav aria-label="Sections">
+      <a href="#features">Features</a>
+      <a href="#pager">Pager</a>
+      <a href="#download">Get it</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn pri" href="#download">Free trial</a>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">AI-driven · Bracket · .90 index · Junior Dragster</div>
+      <h1>Take the stripe.<br><em>Not the breakout.</em></h1>
+      <p class="lede">Stripe Sense is AI-driven. It learns <b>your</b> car from <b>your</b> runs and <b>your</b> weather station, then shows the dial-in, throttle-stop time and delay-box setting for the next round, plus your chance of breaking out. It can send the numbers to your phone or a pager.</p>
+      <div class="cta">
+        <a class="btn pri" href="#download">Download the free trial</a>
+        <a class="btn" href="#features">See what it does</a>
+      </div>
+      <p class="fine">Windows now · Android in testing · iPad planned. 30 days free, no card needed.</p>
+    </div>
+    <img class="shot" src="img/lanes.jpg" width="1200" height="750" alt="The Lanes screen: throttle stop 2.636 in big yellow numbers, the delay box, and the current air.">
+  </div>
+</div>
+<div class="checker"></div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">What it does</div>
+      <h2>Simple to use. Smart underneath.</h2>
+      <p>Open it and your next numbers are right there. After the run, snap the slip, tap Won or Lost, and save. Every run you log teaches the AI more about your car.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile"><h3>AI-driven predictions</h3><p>Throttle stop or dial-in and the delay box for each lane, big on the first screen. The AI learns your car's own weather, 60-foot and stop-time effects from your log, and a Smart Blend trusts each of five formulas by how well it has called your runs.</p></div>
+      <div class="tile"><h3>AI slip reading</h3><p>Take a picture of your time slip and an AI text reader on your own device fills in both lanes, with no signal. Slips differ from track to track, so numbers it isn't sure of are highlighted. Check before you save.</p></div>
+      <div class="tile" style="display:flex;flex-direction:column"><span class="tag">Next update</span><h3>Race Compare</h3><p>See who took the stripe and by how many feet and inches, estimated from the slips. Watch both cars from above, or jump to any marker down the track.</p></div>
+      <div class="tile" style="display:flex;flex-direction:column"><span class="tag">Next update</span><h3>Know the field</h3><p>Type or paste the ladder and qualifying sheets posted at the track, or scan a ladder photo (new, still being tested: check every row). It remembers each racer and how they run, and shows who you race next.</p></div>
+    </div>
+    <p class="also"><b>Also:</b> your numbers on your phone as a notification, one tap or automatically (the free ntfy app, no account; needs internet on the laptop, like track Wi-Fi or a hotspot). <b>Weather:</b> Davis, Ambient, Tempest and Ecowitt live; Kestrel, RaceAir and PerformAIRE by file import; or type it in. <b>Your class:</b> presets for Super Comp, Super Gas, Super Street, ⅛-mile .90, Pro, Sportsman and Junior Dragster (Top Sportsman and Top Dragster in the next update), in ¼ or ⅛ mile, with 139 US dragstrips built in, or add your own. Predictions, slip reading and the field work with no signal at all.</p>
+    <div class="shots">
+      <figure><img class="shot" src="img/finish.jpg" width="1100" height="576" loading="lazy" alt="Race Compare: both cars from above at the finish line, who took the stripe and by how many feet and inches, and the times down the track."><figcaption><b>Race Compare</b> (next update) · who took the stripe, and who broke out</figcaption></figure>
+      <figure><img class="shot" src="img/field.jpg" width="1100" height="576" loading="lazy" alt="Posted sheets and the field: a ladder and qualifying sheets added from the track, with each racer's average reaction time, ET and speed."><figcaption><b>The field</b> (next update) · every racer on the sheets</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="pager" class="alt">
+  <div class="wrap pband">
+    <div>
+      <span class="tag">Pager</span>
+      <h2>No signal? Use the pager.</h2>
+      <p class="mute" style="margin:0">Your numbers go from the laptop straight to a pager in your pocket or on the dash, by long-range digital radio.</p>
+      <ul>
+        <li><b>No license, no internet, no cell service.</b> It uses the license-free 915 MHz band in the US, up to about a mile in the open.</li>
+        <li><b>Choose what each line shows,</b> like the send time and which way your stop is trending (next update).</li>
+        <li><b>Just yours:</b> a private, encrypted channel only your radios can read.</li>
+      </ul>
+    </div>
+    <div class="pager" role="img" aria-label="Illustration of a small pager showing: #4127 STOP 1.319, UP .004 x3, DLY L1.050 R1.075, DA 1770 71F 48%, SENT 2:41:15P #7.">
+      <div class="pager-ant"></div>
+      <div class="pager-body">
+        <div class="pager-screen">
+          <pre>#4127 STOP 1.319
+UP .004 x3
+DLY L1.050 R1.075
+DA 1770 71F 48%
+SENT 2:41:15P #7</pre>
+        </div>
+        <div class="pager-btn"></div>
+      </div>
+      <div class="pager-cap">Illustration</div>
+    </div>
+    <div class="kit">
+      <span class="tag soon">Available soon</span>
+      <h3>Stripe Sense Pager Kit</h3>
+      <div class="kit-price"><b>$500</b><span>one time · no monthly fees</span></div>
+      <ul>
+        <li><b>Laptop radio</b> that plugs into USB, and a <b>pager</b> with its own screen</li>
+        <li><b>Set up and paired for you</b> on your own private channel</li>
+        <li><b>Extra pagers $200 each.</b> US 915 MHz band only.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Get it</div>
+      <h2>Try it free for 30 days</h2>
+      <p>Every feature is unlocked during the trial. After 30 days, predictions, the Lanes numbers and sending to your phone or pager need a license. Your runs and data stay yours.</p>
+    </div>
+    <div class="get">
+      <div>
+        <span class="tag">Available now</span>
+        <h3>Windows</h3>
+        <p>64-bit Windows 10 or 11. One installer, no extra software. It tells you when an update is out and installs it in one click.</p>
+        <a class="btn pri" href="https://github.com/nhildahl/stripe-sense-releases/releases/latest/download/StripeSenseSetup.exe">Download for Windows</a>
+      </div>
+      <div class="others">
+        <p><b>Android:</b> a test version. <a href="https://github.com/nhildahl/stripe-sense-releases/releases/latest">Get the APK</a> and allow the install from that source.</p>
+        <p><b>iPad:</b> planned, not started.</p>
+        <p class="small">First time you run the installer, Windows may say "Windows protected your PC", because the installer isn't signed with a certificate yet. Click <b>More info</b>, then <b>Run anyway</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="head">
+      <div class="kicker">Questions</div>
+      <h2>FAQ</h2>
+    </div>
+    <details><summary>What does "AI-driven" mean here?</summary><p>Two things, both running on your own laptop with no account, key or internet: a learning model that fits your car's own weather, 60-foot and stop-time effects from your runs and re-weights its formulas after every run, and a neural-network text reader for your slips. It isn't a chatbot, and your runs aren't sent anywhere to be analyzed. Predictions are still estimates, and they get better as you log more runs.</p></details>
+    <details><summary>How much does it cost?</summary><p>The 30-day trial is free, with every feature on. Pricing is being finalized. After the trial, predictions, the Lanes numbers and sending need a license key; your log and data always stay yours.</p></details>
+    <details><summary>I race by myself. Does it still work?</summary><p>That's who it's made for. Log your run when you get back to the trailer, and Stripe Sense can send the numbers for the next round to your phone, or to a pager, by itself whenever the weather changes them.</p></details>
+    <details><summary>What if there's no signal at the track?</summary><p>The predictions, slip reading and the field run on your laptop with no internet. Phone messages (through the free ntfy service) and online weather need a connection, like track Wi-Fi or a hotspot. For no signal at all, use the pager: two small radios on a private channel. The pager kit is coming soon. It works with the Windows version, over USB. Android support is built but not tested yet.</p></details>
+    <details><summary>Can it read a time slip, or a ladder?</summary><p>A photo of your time slip fills in both lanes. Reading a photo of a posted ladder is coming in the next update and is still being tested; qualifying sheets can be typed or pasted, and reading them from a photo hasn't been tested yet. Everything is read on your own device, with no signal. Slips and sheets differ from track to track and photos aren't perfect: numbers it isn't sure of are highlighted, but a few mistakes can slip through, so check every row before you save. Lay the sheet flat, fill the picture and keep it sharp.</p></details>
+    <details><summary>Where is my data kept?</summary><p>Your runs, cars and photos stay on your own computer. Only what you choose to send to your phone leaves it, through the free ntfy service. You can make a backup file at any time and move it to a new laptop.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b style="color:var(--ink)">Stripe Sense</b> · Made by a racer, for racers. Predictions are estimates. You make the call, and you're responsible for your dial-in.</p>
+    <p>Station makers' names are their trademarks; Stripe Sense isn't made by or affiliated with them. Track list © OpenStreetMap contributors (ODbL) and Wikipedia. Weather: National Weather Service. Screenshots use made-up demo data.</p>
+  </div>
+</footer>
+
+</body>
+</html>
