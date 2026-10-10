@@ -176,6 +176,14 @@ section::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8
 .shots figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:14px;font-size:14.5px;color:var(--mute)}
 .shots figcaption b{font:600 22px/1 var(--serif);color:var(--ink);letter-spacing:.01em}
 .shots-note{margin-top:14px}
+.fmsec{border-top:1px solid var(--line)}
+.fmgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:center}
+.fmgrid ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.fmgrid li{position:relative;padding-left:20px;color:var(--mute);line-height:1.5}
+.fmgrid li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;transform:rotate(45deg);background:var(--gold)}
+.fmgrid li b{color:var(--ink)}
+.fmgrid .frame img{aspect-ratio:784/575;height:auto}
+@media (max-width:900px){.fmgrid{grid-template-columns:minmax(0,1fr);gap:22px}}
 
 /* looks */
 .looks-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:48px;align-items:end;margin-bottom:30px}
@@ -468,6 +476,23 @@ SENT 2:41:15P #7</pre>
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="formulas" class="fmsec">
+  <div class="wrap fmgrid">
+    <div>
+      <div class="kicker">Formulas</div>
+      <h2>Every formula, <em>side by side.</em></h2>
+      <p class="lead">Stripe IQ works out your number six ways and shows them all together, so you can see how close each one has been on your own runs.</p>
+      <ul>
+        <li><b>Smart Blend</b> leans on whichever formulas have been closest.</li>
+        <li><b>Form</b>, <b>Adaptive</b> and Smart Blend carry the AI chip: they work from your own runs and today's weather.</li>
+        <li><b>Density Altitude</b>, <b>HP Correction</b> and <b>Weather Formula</b> are the classic methods, kept so you can compare.</li>
+        <li>Under each card, <b>avg miss</b> shows how far off it has been over your recent runs. Tap a card to use it.</li>
+      </ul>
+    </div>
+    <div class="frame"><img src="img/formulas.jpg" width="784" height="575" loading="lazy" alt="The formulas screen: predicted ET 8.952, throttle stop time 2.636 with a safer stop and confidence, the delay box 0.015, and six formula cards (Smart Blend, Form, Adaptive, Density Altitude, HP Correction and Weather Formula) each with its stop time, spread and average miss over recent runs."></div>
   </div>
 </section>
 
