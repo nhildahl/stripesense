@@ -88,7 +88,7 @@ b{font-weight:600}
 header.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(24,21,18,.97),rgba(14,13,11,.97));border-bottom:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,212,110,.06),0 14px 30px -22px #000}
 .top .wrap{display:flex;align-items:center;gap:20px;height:68px}
 .brand{display:flex;align-items:center;gap:12px;min-height:44px;text-decoration:none;color:var(--ink);font:500 19px/1 var(--serif);letter-spacing:.3em;text-transform:uppercase}
-.brand img{width:34px;height:34px;border-radius:9px;filter:grayscale(1) sepia(.85) saturate(1.7) brightness(1.02) contrast(1.05);box-shadow:0 0 0 1px var(--line-strong),0 4px 14px -4px rgba(255,180,0,.35)}
+.brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 4px 14px -4px rgba(255,180,0,.35)}
 .brand i{font-style:italic;font-weight:700;letter-spacing:.14em;margin-left:-.12em;padding-right:.1em;color:#ffb400;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .brand .spark{width:9px;height:9px;align-self:flex-start;margin:11px 0 0 -9px;color:var(--gold-hi);filter:drop-shadow(0 0 5px rgba(255,180,0,.9))}
 .top nav{margin-left:auto;display:flex;gap:6px}
@@ -428,7 +428,7 @@ h3{font-size:22px;letter-spacing:.05em}
 header.top{background:linear-gradient(180deg,#111316,#0a0b0d);border-bottom:1px solid rgba(255,180,0,.62);box-shadow:0 1px 20px rgba(255,180,0,.08)}
 .brand{font:700 18px/1 var(--label);letter-spacing:.16em}
 .brand i{font-family:var(--mono);font-weight:700;letter-spacing:.06em;margin-left:.15em;padding:0}
-.brand img{border-radius:5px;filter:grayscale(1) sepia(.85) saturate(2.4) hue-rotate(-8deg) brightness(.92);box-shadow:0 0 0 1px rgba(255,180,0,.45)}
+.brand img{border-radius:5px;box-shadow:none}
 .top nav a{font-family:var(--label);font-weight:600;letter-spacing:.2em;border-radius:2px}
 .top nav a:hover{color:#ffb400;text-shadow:0 0 12px var(--glow)}
 .eyebrow{font-family:var(--label)}
@@ -488,6 +488,7 @@ footer .fbrand i{font-family:var(--mono);letter-spacing:.06em}
   <div class="wrap">
     <a class="brand" href="#" aria-label="Stripe IQ, back to top"><img src="img/icon.svg" width="34" height="34" alt="">Stripe <i>IQ</i><span class="spark" aria-hidden="true"></span></a>
     <nav aria-label="Sections">
+      <a href="#formulas">Formulas</a>
       <a href="#pager">Pager</a>
       <a href="#features">Features</a>
       <a href="#download">Get it</a>
@@ -508,7 +509,7 @@ footer .fbrand i{font-family:var(--mono);letter-spacing:.06em}
         <a class="btn pri" href="#download">Download the free trial</a>
         <a class="btn" href="#features">See what it does</a>
       </div>
-      <p class="fine">For Windows and Android. 30 days free, no card needed. The Pager Kit is available soon.</p>
+      <p class="fine">For Windows and Android. Free for one race weekend (7 days), no card needed.</p>
     </div>
     <figure class="hfig">
       <div class="dial" aria-hidden="true"></div>
@@ -517,6 +518,23 @@ footer .fbrand i{font-family:var(--mono);letter-spacing:.06em}
     </figure>
   </div>
 </div>
+
+<section id="formulas" class="fmsec">
+  <div class="wrap fmgrid">
+    <div>
+      <div class="kicker">Formulas</div>
+      <h2>Every formula, <em>side by side.</em></h2>
+      <p class="lead">Stripe IQ works out your number six ways and shows them all together, so you can see how close each one has been on your own runs.</p>
+      <ul>
+        <li><b>Smart Blend</b> leans on whichever formulas have been closest.</li>
+        <li><b>Form</b>, <b>Adaptive</b> and Smart Blend carry the AI chip: they work from your own runs and today's weather.</li>
+        <li><b>Density Altitude</b>, <b>HP Correction</b> and <b>Weather Formula</b> are the classic methods, kept so you can compare.</li>
+        <li>Under each card, <b>avg miss</b> shows how far off it has been over your recent runs. Tap a card to use it.</li>
+      </ul>
+    </div>
+    <div class="frame"><img src="img/formulas.jpg" width="784" height="566" loading="lazy" alt="The formulas screen: predicted ET 8.952, throttle stop time 2.636 with a safer stop and confidence, the delay box 0.015, and six formula cards (Smart Blend, Form, Adaptive, Density Altitude, HP Correction and Weather Formula) each with its stop time, spread and average miss over recent runs."></div>
+  </div>
+</section>
 
 <section id="pager" class="alt">
   <div class="wrap pband">
@@ -547,7 +565,6 @@ SENT 2:41:15P #7</pre>
     </div>
     <div class="kitwrap">
       <div class="kit">
-        <span class="tag nx">Available soon</span>
         <h3>Stripe IQ Pager Kit</h3>
         <div class="price"><b>$500</b><span>radios, one time · no monthly fees</span></div>
         <ul>
@@ -560,23 +577,6 @@ SENT 2:41:15P #7</pre>
   </div>
 </section>
 
-<section id="formulas" class="fmsec">
-  <div class="wrap fmgrid">
-    <div>
-      <div class="kicker">Formulas</div>
-      <h2>Every formula, <em>side by side.</em></h2>
-      <p class="lead">Stripe IQ works out your number six ways and shows them all together, so you can see how close each one has been on your own runs.</p>
-      <ul>
-        <li><b>Smart Blend</b> leans on whichever formulas have been closest.</li>
-        <li><b>Form</b>, <b>Adaptive</b> and Smart Blend carry the AI chip: they work from your own runs and today's weather.</li>
-        <li><b>Density Altitude</b>, <b>HP Correction</b> and <b>Weather Formula</b> are the classic methods, kept so you can compare.</li>
-        <li>Under each card, <b>avg miss</b> shows how far off it has been over your recent runs. Tap a card to use it.</li>
-      </ul>
-    </div>
-    <div class="frame"><img src="img/formulas.jpg" width="784" height="566" loading="lazy" alt="The formulas screen: predicted ET 8.952, throttle stop time 2.636 with a safer stop and confidence, the delay box 0.015, and six formula cards (Smart Blend, Form, Adaptive, Density Altitude, HP Correction and Weather Formula) each with its stop time, spread and average miss over recent runs."></div>
-  </div>
-</section>
-
 <section id="features">
   <div class="wrap">
     <div class="fhead">
@@ -586,7 +586,7 @@ SENT 2:41:15P #7</pre>
         <p>Your next numbers are right there when you open it. Snap the slip: it reads both lanes and the win light, so the win or loss is filled in when the slip shows one.</p>
       </div>
       <ul class="readouts">
-        <li class="l1"><b>30</b><span>days free, every feature on</span></li>
+        <li class="l1"><b>7</b><span>days free, every feature on</span></li>
         <li class="l2"><b>5</b><span>formulas, blended by how well each called your runs</span></li>
         <li class="l3"><b>$500</b><span>a year, no hidden upgrades</span></li>
         <li class="l4"><b>0</b><span>accounts to sign up for</span></li>
@@ -678,11 +678,11 @@ SENT 2:41:15P #7</pre>
     <div class="getpanel">
       <div class="getL">
         <div class="kicker">Get it</div>
-        <h2>Try it free for <em>30 days</em></h2>
-        <p class="lead">Every feature is unlocked during the trial. After 30 days, predictions, the Lanes numbers and sending need a license: $500 a year, with no hidden upgrades and as many cars as you like from the one software. Your runs and data stay yours.</p>
+        <h2>Try it free for <em>one race weekend</em></h2>
+        <p class="lead">Every feature is unlocked for 7 days. After that, predictions, the Lanes numbers and sending need a license: $500 a year, with no hidden upgrades and as many cars as you like from the one software. Your runs and data stay yours.</p>
         <p class="win"><span class="tag">Available now</span> <b>Windows.</b> 64-bit Windows 10 or 11. One installer, no extra software. It tells you when an update is out and installs it in one click.</p>
         <a class="btn pri" href="https://github.com/nhildahl/stripe-sense-releases/releases/latest/download/StripeSenseSetup.exe">Download for Windows</a>
-        <p class="fine">Version 1.0.2 · 30 days free, no card needed.</p>
+        <p class="fine">Version 1.0.2 · free for 7 days, no card needed.</p>
       </div>
       <div class="getR">
         <dl>
@@ -704,9 +704,9 @@ SENT 2:41:15P #7</pre>
     <div>
       <details class="d1"><summary>What does "AI-driven" mean here?</summary><p>Two things, both running on your own laptop: prediction formulas scored against your own runs, with a Smart Blend that weights the closest, and a neural-network text reader for your slips. It isn't a chatbot, and your runs aren't sent anywhere to be analyzed. The delay box comes from your last few runs' reactions, not from AI. Predictions are estimates, and every dial-in comes with a confidence %.</p></details>
       <details><summary>Can I change how it looks?</summary><p>Yes. There are six looks: Classic, Neural, Pit Wall, Daylight, Obsidian and Carbon. New installs start in Obsidian, and you can switch on first-time setup, with the palette button at the top, or on App Setup.</p></details>
-      <details><summary>How much does it cost?</summary><p>The 30-day trial is free, with every feature on. After the trial a license is $500 a year. There are no hidden upgrades: everything in the software is included, and you can run as many cars as you like from the one software. Your log and data always stay yours.</p></details>
+      <details><summary>How much does it cost?</summary><p>The trial is free for one race weekend (7 days), with every feature on. After the trial a license is $500 a year. There are no hidden upgrades: everything in the software is included, and you can run as many cars as you like from the one software. Your log and data always stay yours.</p></details>
       <details><summary>I race by myself. Does it still work?</summary><p>That's who it's made for. Log your run when you get back to the trailer, and Stripe IQ can send the numbers for the next round to a pager, or to your phone, by itself whenever the weather changes them, while Stripe IQ is open.</p></details>
-      <details><summary>Which parts need the internet at the track?</summary><p>The predictions and slip reading run on your laptop without the internet. The pager sends the numbers over its own radio link, not the internet: two small radios on a private channel. The pager kit is coming soon. It works with the Windows version, over USB. The Android pager (over Bluetooth) hasn't been tested on a phone yet. Phone messages (through the free ntfy service) and online weather need a connection, like track Wi-Fi or a hotspot.</p></details>
+      <details><summary>Which parts need the internet at the track?</summary><p>The predictions and slip reading run on your laptop without the internet. The pager sends the numbers over its own radio link, not the internet: two small radios on a private channel. The pager kit plugs into the Windows version over USB. The Android pager (over Bluetooth) hasn't been tested on a phone yet. Phone messages (through the free ntfy service) and online weather need a connection, like track Wi-Fi or a hotspot.</p></details>
       <details><summary>Can it read a time slip, or a ladder?</summary><p>A photo of your time slip fills in both lanes. It reads the win light too, so the win or loss is filled in when the slip shows one, and you can change the result if it got it wrong. Posted sheets: you can type or paste a ladder or a qualifying sheet, or scan a photo of a ladder (still being tested; reading a qualifying sheet from a photo hasn't been tested yet). Everything is read on your own device. Slips and sheets differ from track to track and photos aren't perfect: numbers it isn't sure of are highlighted, but a few mistakes can slip through, so check every row before you save. Lay the sheet flat, fill the picture and keep it sharp.</p></details>
       <details><summary>Where is my data kept?</summary><p>Your runs, cars and photos stay on your own computer unless you choose to send them somewhere, and nothing is sent for analysis. Numbers you send to a pager go by radio on your private channel, and numbers you send to your phone go through the free ntfy service. Weather, track search, elevation lookups and update checks use the internet when they run. You can make a backup file at any time and move it to a new laptop.</p></details>
     </div>
