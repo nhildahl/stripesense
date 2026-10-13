@@ -399,6 +399,7 @@ footer .made{margin:12px 0 0;font-size:14px;max-width:22em}
   .brand{font-size:14.5px;letter-spacing:.2em}
   .top .btn.sm{padding:0 14px;font-size:12px;letter-spacing:.1em}
 }
+@media (min-width:961px){.wx{grid-template-columns:minmax(0,.8fr) minmax(0,2.2fr)}}
 /* ===== Pit Wall look: amber LED readouts on black, tracked labels, square corners ===== */
 :root{
   --label:"Barlow Semi Condensed","Bahnschrift","Segoe UI Semibold","Segoe UI",system-ui,sans-serif;
@@ -427,7 +428,7 @@ h3{font-size:22px;letter-spacing:.05em}
 .btn.pri:hover{filter:brightness(1.08);box-shadow:0 0 30px -6px var(--glow)}
 header.top{background:linear-gradient(180deg,#111316,#0a0b0d);border-bottom:1px solid rgba(255,180,0,.62);box-shadow:0 1px 20px rgba(255,180,0,.08)}
 .brand{font:700 18px/1 var(--label);letter-spacing:.16em}
-.brand i{font-family:var(--mono);font-weight:700;letter-spacing:.06em;margin-left:.15em;padding:0}
+.brand i{font-style:normal;font-family:var(--mono);font-weight:700;letter-spacing:.06em;margin-left:-9px;padding:0}
 .brand img{border-radius:5px;box-shadow:none}
 .top nav a{font-family:var(--label);font-weight:600;letter-spacing:.2em;border-radius:2px}
 .top nav a:hover{color:#ffb400;text-shadow:0 0 12px var(--glow)}
@@ -472,7 +473,7 @@ details{border-bottom-color:#2a2d31}
 details.d1{border-top-color:#2a2d31}
 footer{background:#050606}
 footer .fbrand{font:700 17px/1 var(--label);letter-spacing:.16em}
-footer .fbrand i{font-family:var(--mono);letter-spacing:.06em}
+footer .fbrand i{font-style:normal;font-family:var(--mono);letter-spacing:.06em;margin-left:-4px}
 @media (max-width:1100px){.readouts b{font-size:36px}}
 @media (max-width:620px){
   .brand{font-size:15px;letter-spacing:.14em}
@@ -588,7 +589,7 @@ SENT 2:41:15P #7</pre>
       <ul class="readouts">
         <li class="l1"><b>7</b><span>days free, every feature on</span></li>
         <li class="l2"><b>5</b><span>formulas, blended by how well each called your runs</span></li>
-        <li class="l3"><b>$500</b><span>a year, no hidden upgrades</span></li>
+        <li class="l3"><b>$449</b><span>a year, no hidden upgrades</span></li>
         <li class="l4"><b>0</b><span>accounts to sign up for</span></li>
       </ul>
     </div>
@@ -601,25 +602,18 @@ SENT 2:41:15P #7</pre>
     <div class="wx" role="group" aria-label="Weather stations">
       <div class="wxh"><div class="wk">Weather</div><h3>Bring the weather gear <em class="gold">you already own.</em></h3></div>
       <div>
-        <h4>Live from your station</h4>
+        <h4>Works with</h4>
         <ul>
-          <li>Davis WeatherLink (a WeatherLink Live on your own network, or your WeatherLink account), WeatherFlow Tempest, Ecowitt, Ambient Weather</li>
-          <li>No station? The nearest National Weather Service station (about hourly, may differ from your strip), or type the numbers in</li>
-          <li class="na">No account needed: WeatherLink Live, Tempest hub (Windows), Ecowitt gateway on your network</li>
+          <li><b>Davis WeatherLink:</b> read live from a WeatherLink Live on your own network (no account needed), or from your WeatherLink account.</li>
+          <li><b>Computech RaceAir</b> and <b>Altronics PerformAIRE:</b> Stripe IQ reads the weather log your station saves.</li>
+          <li>Or type the numbers in from any meter.</li>
         </ul>
       </div>
-      <div>
-        <h4>From their saved logs</h4>
-        <ul>
-          <li>Computech RaceAir, Altronics PerformAIRE and Kestrel: Stripe IQ reads the log file they save or export (the Kestrel LiNK app's CSV, RaceAir and PerformAIRE exports).</li>
-        </ul>
-      </div>
-    </div>
-    <dl class="also" aria-label="Also included">
+    </div>    <dl class="also" aria-label="Also included">
       <div><dt>Class presets</dt><dd>Super Comp, Super Gas, Super Street, ⅛-mile .90, Pro, Sportsman, Junior Dragster, Top Sportsman and Top Dragster, in ¼ or ⅛ mile</dd></div>
-      <div><dt>Tracks and cars</dt><dd>Most US drag strips are already in the software, and you can add more if you need to. Run as many cars as you like from the one software.</dd></div>
+      <div><dt>Tracks and cars</dt><dd>Most US drag strips are already in the software, and you can add more if you need to. One computer can run up to 3 different cars on a single license.</dd></div>
     </dl>
-    <p class="also-short"><b>Also:</b> class presets in ¼ or ⅛ mile; most US drag strips built in, add more if you need to; run several cars from one software.</p>
+    <p class="also-short"><b>Also:</b> class presets in ¼ or ⅛ mile; most US drag strips built in, add more if you need to; one computer runs up to 3 cars on one license.</p>
     <div class="shots" role="group" aria-label="Screenshots">
       <figure>
         <div class="frame sm"><img src="img/finish.jpg" width="720" height="548" loading="lazy" alt="Race Compare: the result card saying Delgado wins, you took the stripe by 13 ft 11¼ in but broke out, and below it both cars at the finish line on the track chart."></div>
@@ -679,7 +673,7 @@ SENT 2:41:15P #7</pre>
       <div class="getL">
         <div class="kicker">Get it</div>
         <h2>Try it free for <em>one race weekend</em></h2>
-        <p class="lead">Every feature is unlocked for 7 days. After that, predictions, the Lanes numbers and sending need a license: $500 a year, with no hidden upgrades and as many cars as you like from the one software. Your runs and data stay yours.</p>
+        <p class="lead">Every feature is unlocked for 7 days. After that, predictions, the Lanes numbers and sending need a license: $449 a year, with no hidden upgrades. One computer can run up to 3 different cars on a single license. Your runs and data stay yours.</p>
         <p class="win"><span class="tag">Available now</span> <b>Windows.</b> 64-bit Windows 10 or 11. One installer, no extra software. It tells you when an update is out and installs it in one click.</p>
         <a class="btn pri" href="https://github.com/nhildahl/stripe-sense-releases/releases/latest/download/StripeSenseSetup.exe">Download for Windows</a>
         <p class="fine">Version 1.0.2 · free for 7 days, no card needed.</p>
@@ -687,7 +681,6 @@ SENT 2:41:15P #7</pre>
       <div class="getR">
         <dl>
           <div class="row r1"><dt>Android</dt><dd>The Android app is a separate download. Allow the install from that source.<br><a class="btn sm apk" href="https://github.com/nhildahl/stripe-sense-releases/releases/latest">Get the APK</a></dd></div>
-          <div class="row"><dt>New name</dt><dd>Stripe IQ was called Stripe Sense. If you have the old version, updating keeps your runs and data.</dd></div>
           <div class="row rl"><dt>First run</dt><dd>Windows may say "Windows protected your PC", because the installer isn't signed with a certificate yet. Click <b>More info</b>, then <b>Run anyway</b>.</dd></div>
         </dl>
       </div>
@@ -704,9 +697,9 @@ SENT 2:41:15P #7</pre>
     <div>
       <details class="d1"><summary>What does "AI-driven" mean here?</summary><p>Two things, both running on your own laptop: prediction formulas scored against your own runs, with a Smart Blend that weights the closest, and a neural-network text reader for your slips. It isn't a chatbot, and your runs aren't sent anywhere to be analyzed. The delay box comes from your last few runs' reactions, not from AI. Predictions are estimates, and every dial-in comes with a confidence %.</p></details>
       <details><summary>Can I change how it looks?</summary><p>Yes. There are six looks: Classic, Neural, Pit Wall, Daylight, Obsidian and Carbon. New installs start in Obsidian, and you can switch on first-time setup, with the palette button at the top, or on App Setup.</p></details>
-      <details><summary>How much does it cost?</summary><p>The trial is free for one race weekend (7 days), with every feature on. After the trial a license is $500 a year. There are no hidden upgrades: everything in the software is included, and you can run as many cars as you like from the one software. Your log and data always stay yours.</p></details>
+      <details><summary>How much does it cost?</summary><p>The trial is free for one race weekend (7 days), with every feature on. After the trial a license is $449 a year. There are no hidden upgrades: everything in the software is included, and one computer can run up to 3 different cars on a single license. Your log and data always stay yours.</p></details>
       <details><summary>I race by myself. Does it still work?</summary><p>That's who it's made for. Log your run when you get back to the trailer, and Stripe IQ can send the numbers for the next round to a pager, or to your phone, by itself whenever the weather changes them, while Stripe IQ is open.</p></details>
-      <details><summary>Which parts need the internet at the track?</summary><p>The predictions and slip reading run on your laptop without the internet. The pager sends the numbers over its own radio link, not the internet: two small radios on a private channel. The pager kit plugs into the Windows version over USB. The Android pager (over Bluetooth) hasn't been tested on a phone yet. Phone messages (through the free ntfy service) and online weather need a connection, like track Wi-Fi or a hotspot.</p></details>
+      <details><summary>Which parts need the internet at the track?</summary><p>The predictions and slip reading run on your laptop without the internet. The pager sends the numbers over its own radio link, not the internet: two small radios on a private channel. The pager kit plugs into the Windows version over USB. The Android pager (over Bluetooth) hasn't been tested on a phone yet. Phone messages (through the free ntfy service) and cloud weather accounts need a connection, like track Wi-Fi or a hotspot.</p></details>
       <details><summary>Can it read a time slip, or a ladder?</summary><p>A photo of your time slip fills in both lanes. It reads the win light too, so the win or loss is filled in when the slip shows one, and you can change the result if it got it wrong. Posted sheets: you can type or paste a ladder or a qualifying sheet, or scan a photo of a ladder (still being tested; reading a qualifying sheet from a photo hasn't been tested yet). Everything is read on your own device. Slips and sheets differ from track to track and photos aren't perfect: numbers it isn't sure of are highlighted, but a few mistakes can slip through, so check every row before you save. Lay the sheet flat, fill the picture and keep it sharp.</p></details>
       <details><summary>Where is my data kept?</summary><p>Your runs, cars and photos stay on your own computer unless you choose to send them somewhere, and nothing is sent for analysis. Numbers you send to a pager go by radio on your private channel, and numbers you send to your phone go through the free ntfy service. Weather, track search, elevation lookups and update checks use the internet when they run. You can make a backup file at any time and move it to a new laptop.</p></details>
     </div>
@@ -722,7 +715,7 @@ SENT 2:41:15P #7</pre>
     </div>
     <div>
       <p>Predictions are estimates. You make the call, and you're responsible for your dial-in.</p>
-      <p>Station makers' names are their trademarks; Stripe IQ isn't made by or affiliated with them. Track list © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) and Wikipedia. Weather: National Weather Service. Screenshots use made-up demo data.</p>
+      <p>Station makers' names are their trademarks; Stripe IQ isn't made by or affiliated with them. Track list © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) and Wikipedia. Screenshots use made-up demo data.</p>
       <p>Stripe IQ is an independent drag-racing tool and is not affiliated with or endorsed by Stripe, Inc.</p>
     </div>
   </div>
