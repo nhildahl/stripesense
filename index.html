@@ -501,12 +501,12 @@ html.intro .intro-s{display:flex}
 .intro-s .tg{font:700 13px/1 var(--num);letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-top:-8px}
 .intro-s .sweep{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0}
 @media (prefers-reduced-motion:no-preference){
-  .intro-s .sweep{animation:sw 3.2s ease-in-out .3s 1 both}
+  .intro-s .sweep{animation:sw 3.6s ease-in-out .3s infinite alternate both}
   .intro-s .lg{animation:rise .9s ease both}
   .intro-s .cl{animation:rise .7s ease both}
   .intro-s .cl:nth-child(1){animation-delay:.35s}.intro-s .cl:nth-child(2){animation-delay:.5s}.intro-s .cl:nth-child(3){animation-delay:.65s}.intro-s .cl:nth-child(4){animation-delay:.8s}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @keyframes sw{0%{top:0;opacity:0}10%{opacity:.9}90%{opacity:.9}100%{top:100%;opacity:0}}
+  @keyframes sw{0%{top:0;opacity:.15}12%{opacity:.95}88%{opacity:.95}100%{top:calc(100% - 2px);opacity:.15}}
 }
 @media (max-width:720px){.intro-s .rd{grid-template-columns:repeat(2,minmax(0,1fr))}.intro-s .nm{font-size:clamp(30px,10vw,64px)}}@media (max-width:620px){
   .brand{font-size:15px;letter-spacing:.14em}
@@ -524,7 +524,7 @@ html.intro .intro-s{display:flex}
     <div class="cl" data-v="8.90"><span class="lb">Dial-in</span><b class="nm">8.90</b></div>
     <div class="cl hot" data-v="2.636"><span class="lb">Throttle stop</span><b class="nm">2.636</b></div>
     <div class="cl" data-v="0.045"><span class="lb">Delay box</span><b class="nm">0.045</b></div>
-    <div class="cl hot" data-v="99%"><span class="lb">Confidence</span><b class="nm">99%</b></div>
+    <div class="cl hot" data-v="100%"><span class="lb">Confidence</span><b class="nm">100%</b></div>
   </div>
   <div class="tg">Take the stripe. Not the breakout.</div>
   <button class="go-btn" id="introGo" type="button">Enter</button>
