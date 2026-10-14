@@ -19,7 +19,7 @@
 <meta name="twitter:image:alt" content="The Dead On IQ Lanes screen in amber on black: the throttle stop 2.636 in large amber numerals with an AI chip, beside the delay box 0.015.">
 <meta name="theme-color" content="#08090a">
 <meta name="color-scheme" content="dark">
-<script>try{if(!sessionStorage.getItem("doiq-intro")||/[?&]intro\b/.test(location.search))document.documentElement.className="intro"}catch(e){document.documentElement.className="intro"}</script>
+<script>document.documentElement.className="js";try{if(!sessionStorage.getItem("doiq-intro")||/[?&]intro\b/.test(location.search))document.documentElement.className="js intro"}catch(e){document.documentElement.className="js intro"}</script>
 <link rel="icon" href="img/icon.svg" type="image/svg+xml">
 <link rel="icon" href="img/icon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="img/icon-256.png">
@@ -71,9 +71,8 @@ b{font-weight:600}
   background:linear-gradient(180deg,#1d1600,#120d00) padding-box,linear-gradient(135deg,#ffd36a,#a87400 55%,#ffc233) border-box;
   box-shadow:0 0 14px -4px rgba(255,180,0,.5);text-shadow:0 0 8px rgba(255,180,0,.45)}
 .ai .spark{width:10px;height:10px}
-/* tags: a solid chip for what is here now, a dashed ivory outline for what is not in the download yet (Next update, Available soon) */
+/* tags: small outlined chips */
 .tag{display:inline-block;padding:4px 9px;border-radius:6px;border:1px solid rgba(255,180,0,.34);background:rgba(255,180,0,.09);font:700 12px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-txt);white-space:nowrap;vertical-align:middle}
-.tag.nx{border:1px dashed rgba(236,233,225,.72);background:transparent;color:var(--ink)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:9px;font:700 14px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;white-space:nowrap;cursor:pointer;
@@ -155,7 +154,7 @@ section::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8
 .tile .mark{display:flex;align-items:center;min-height:26px;margin-bottom:12px}
 .tile h3{margin-bottom:10px}
 .tile p{margin:0;color:var(--ink2);font-size:15.5px;line-height:1.55}
-/* weather band: headline, then two labelled lists (works today / being checked) */
+/* weather band: headline, then a labelled list */
 .wx{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,2fr) minmax(0,.75fr);gap:18px 40px;color:var(--ink2);font-size:15px;line-height:1.5}
 .wx>div{min-width:0}
 .wk,.wx h4{margin:0 0 7px;font:700 12px/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
@@ -310,7 +309,6 @@ footer .made{margin:12px 0 0;font-size:14px;max-width:22em}
   .lname{min-height:0}
 }
 @media (max-width:860px){
-  .top nav{display:none}
   .top .btn{margin-left:auto}
 }
 @media (max-width:760px){
@@ -351,7 +349,7 @@ footer .made{margin:12px 0 0;font-size:14px;max-width:22em}
   .tile p{grid-column:1 / -1;font-size:15px;line-height:1.5}
   .wx{grid-template-columns:minmax(0,1fr);margin-top:14px;padding-top:12px;gap:10px;font-size:14px;line-height:1.5}
   .wx h3{font-size:22px}
-  .wk,.wx .na{display:none}
+  .wk{display:none}
   .wx h4{margin-bottom:4px}
   .wx li{margin-bottom:4px}
   .tile p .more,.pband li.more{display:none}
@@ -422,7 +420,6 @@ h3{font-size:22px;letter-spacing:.05em}
 .kicker::before{width:8px;height:8px;background:#ffb400;box-shadow:0 0 10px var(--glow)}
 .ai{border-radius:2px;font-family:var(--label);letter-spacing:.18em;background:rgba(255,180,0,.07);border-color:rgba(255,180,0,.55);box-shadow:none;text-shadow:0 0 8px var(--glow)}
 .tag{border-radius:2px;font-family:var(--label);letter-spacing:.14em;border-color:rgba(255,180,0,.5);background:rgba(255,180,0,.07);color:#ffb400}
-.tag.nx{border:1px dashed rgba(236,233,225,.5);background:transparent;color:var(--ink)}
 .btn{border-radius:3px;font-family:var(--label);font-weight:700;letter-spacing:.14em;background:#101214;border-color:#3a3f46;box-shadow:none}
 .btn:hover{border-color:#ffb400;box-shadow:0 0 18px -6px var(--glow)}
 .btn.pri{background:#ffb400;color:#120d00;border-color:#ffb400;box-shadow:0 0 26px -8px var(--glow)}
@@ -472,7 +469,7 @@ summary::after{border-radius:3px;font-family:var(--mono);border-color:#3a3f46}
 details[open] summary,summary:hover{color:#ffb400}
 details{border-bottom-color:#2a2d31}
 details.d1{border-top-color:#2a2d31}
-footer{background:#050606}
+footer{background:#08090a}
 footer .fbrand{font:700 17px/1 var(--label);letter-spacing:.16em}
 footer .fbrand i{font-style:normal;font-family:var(--mono);letter-spacing:.06em;margin-left:-4px}
 @media (max-width:1100px){.readouts b{font-size:36px}}
@@ -514,6 +511,86 @@ html.intro .intro-s{display:flex}
   summary{font-size:17px}
   .tile h3{font-size:19px}
   .wx h3{font-size:21px}
+}
+/* ---- tabs: every top-level page of the site is its own panel. Routes are the section ids:
+   #formulas  #pager  #features (and #looks)  #download (Pricing)  #faq ; #home or nothing = Home. Without scripts all panels show, one long page. ---- */
+html.js .pg{display:none}
+html.js .pg.on{display:block}
+@media (prefers-reduced-motion:no-preference){
+  html.js .pg.on{animation:pgin .38s ease both}
+  @keyframes pgin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+.pg [tabindex="-1"]:focus{outline:none}
+.top nav a{position:relative}
+.top nav a::after{content:"";position:absolute;left:14px;right:14px;bottom:7px;height:2px;background:#ffb400;box-shadow:0 0 10px var(--glow);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.top nav a:hover::after{transform:scaleX(.35)}
+.top nav a[aria-current="page"]{color:var(--ink)}
+.top nav a[aria-current="page"]::after{transform:scaleX(1)}
+@media (forced-colors:active){.top nav a[aria-current="page"]{text-decoration:underline}}
+
+/* Home: four doors to the other pages */
+.hub{padding:34px 0 46px}
+.hubgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.hubcard{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 22px 20px;border:1px solid var(--line-strong);background:linear-gradient(180deg,#101214,#0b0c0d);color:inherit;text-decoration:none;transition:border-color .2s,box-shadow .2s,transform .2s}
+.hubcard::before,.hubcard::after{content:"";position:absolute;width:14px;height:14px;border:0 solid #ffb400;transition:width .2s,height .2s}
+.hubcard::before{left:-1px;top:-1px;border-left-width:2px;border-top-width:2px}
+.hubcard::after{right:-1px;bottom:-1px;border-right-width:2px;border-bottom-width:2px}
+.hubcard:hover{border-color:#ffb400;box-shadow:0 0 30px -12px var(--glow);transform:translateY(-2px)}
+.hubcard:hover::before,.hubcard:hover::after{width:22px;height:22px}
+.hubcard .k{font:700 12px/1.2 var(--label);letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+.hubcard h3{font-size:24px;line-height:1.05;color:var(--ink)}
+.hubcard h3 em{color:#ffb400}
+.hubcard p{margin:0;color:var(--ink2);font-size:15.5px;line-height:1.5}
+.hubcard .go{margin-top:auto;padding-top:6px;font:700 12.5px/1 var(--label);letter-spacing:.2em;text-transform:uppercase;color:#ffb400}
+.hubcard .go span{display:inline-block;transition:transform .2s}
+.hubcard:hover .go span{transform:translateX(4px)}
+
+/* Pricing page: the two things you can buy, then the download */
+.pricegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:0 0 28px}
+.pricegrid .kit ul{list-style:none;margin:14px 0 0;padding:0}
+.pricegrid .kit li{position:relative;padding-left:26px;margin:10px 0;color:var(--ink2);font-size:16px}
+.pricegrid .kit li b{color:var(--ink)}
+.pricegrid .kit li::before{content:"";position:absolute;left:3px;top:.62em;width:7px;height:7px;background:var(--mute)}
+
+@media (max-width:1020px){
+  html{scroll-padding-top:112px}
+  .top .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:0;gap:0 12px}
+  .top .btn{margin-left:auto}
+  .top nav{order:3;flex:0 0 100%;margin:2px -6px 0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 22px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 22px),transparent)}
+  .top nav::-webkit-scrollbar{display:none}
+  .top nav a{flex:none;min-height:42px;padding:0 13px}
+  .top nav a::after{left:13px;right:13px;bottom:4px}
+  .hubgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){.pricegrid{grid-template-columns:minmax(0,1fr);gap:16px}}
+@media (max-width:620px){
+  .hubgrid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .hub{padding:22px 0 30px}
+  .hubcard{padding:16px 16px 14px}
+  .hubcard h3{font-size:22px}
+  .hubcard p{font-size:15px}
+  .pricegrid .kit li{font-size:15.5px}
+}
+/* ---- review fixes ---- */
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+html{scrollbar-gutter:stable}
+/* short pages: the footer stays at the bottom of the window */
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+main{flex:1 0 auto}
+/* the first section of a tab sits right under the header: no divider line or diamond there */
+html.js .pg>section:first-child::before,html.js .pg>section:first-child::after{display:none}
+html.js .pg>section.fmsec:first-child{border-top:0}
+.top nav{position:relative}
+.top nav a:focus-visible{outline-offset:-4px}
+.top nav{scroll-padding-inline:24px}
+.brand i{margin-left:-.5em}
+.intro-s{overflow-x:hidden}
+.intro-s .rd{width:min(960px,100%)}
+@media (max-width:1020px) and (max-height:480px){header.top{position:static}}
+@media (prefers-reduced-motion:reduce){
+  .hubcard,.hubcard .go span,.top nav a::after{transition:none}
+  .hubcard:hover,.hubcard:hover .go span{transform:none}
 }</style>
 </head>
 <body>
@@ -531,19 +608,21 @@ html.intro .intro-s{display:flex}
 </div>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#" aria-label="Dead On IQ, back to top"><img src="img/icon.svg" width="34" height="34" alt="">Dead On <i>IQ</i><span class="spark" aria-hidden="true"></span></a>
-    <nav aria-label="Sections">
-      <a href="#formulas">Formulas</a>
-      <a href="#pager">Pager</a>
-      <a href="#features">Features</a>
-      <a href="#download">Get it</a>
-      <a href="#faq">FAQ</a>
+    <a class="brand" href="#home" aria-label="Dead On IQ, home"><img src="img/icon.svg" width="34" height="34" alt="">Dead On <i>IQ</i><span class="spark" aria-hidden="true"></span></a>
+    <nav aria-label="Pages">
+      <a href="#home" data-pg="home">Home</a>
+      <a href="#formulas" data-pg="formulas">Formulas</a>
+      <a href="#pager" data-pg="pager">Pager</a>
+      <a href="#features" data-pg="features">Features</a>
+      <a href="#download" data-pg="download">Pricing</a>
+      <a href="#faq" data-pg="faq">FAQ</a>
     </nav>
-    <a class="btn pri sm" href="#download">Free trial</a>
+    <a class="btn pri sm" href="#get">Free trial</a>
   </div>
 </header>
 
 <main>
+<div class="pg" id="home" data-pg="home">
 <div class="hero">
   <div class="wrap hgrid">
     <div>
@@ -551,7 +630,7 @@ html.intro .intro-s{display:flex}
       <h1>Take the stripe. <em>Not the breakout.</em></h1>
       <p class="lede">Dead On IQ is AI-driven. It works out the dial-in or throttle-stop time for your next round from <b>your</b> runs and <b>your</b> weather, with a confidence %<span class="more"> and a delay-box setting from your recent reactions</span>, and sends it to the pager in your pocket or on the dash.</p>
       <div class="cta">
-        <a class="btn pri" href="#download">Download the free trial</a>
+        <a class="btn pri" href="#get">Download the free trial</a>
         <a class="btn" href="#features">See what it does</a>
       </div>
       <p class="fine">For Windows and Android. Free for one race weekend (7 days), no card needed.</p>
@@ -564,14 +643,27 @@ html.intro .intro-s{display:flex}
   </div>
 </div>
 
-<section id="formulas" class="fmsec">
-  <div class="wrap fmgrid">
+<section class="hub" aria-label="Explore Dead On IQ">
+  <div class="wrap">
+    <h2 class="vh">Explore Dead On IQ</h2>
+    <ul class="hubgrid">
+      <li><a class="hubcard" href="#formulas"><span class="k">Formulas</span><h3>Every formula, <em>side by side.</em></h3><p>Six ways to work out your number, each scored against your own runs.</p><span class="go">Open <span aria-hidden="true">&rarr;</span></span></a></li>
+      <li><a class="hubcard" href="#pager"><span class="k">Pager</span><h3>Your numbers, <em>on a pager.</em></h3><p>From the laptop to your pocket or the dash, by long-range digital radio.</p><span class="go">Open <span aria-hidden="true">&rarr;</span></span></a></li>
+      <li><a class="hubcard" href="#features"><span class="k">Features</span><h3>Simple to use. <em>Smart underneath.</em></h3><p>Slip reading, Race Compare, the field, your weather gear and six looks.</p><span class="go">Open <span aria-hidden="true">&rarr;</span></span></a></li>
+      <li><a class="hubcard" href="#download"><span class="k">Pricing</span><h3>Free for <em>one race weekend.</em></h3><p>Seven days with every feature on, then $449 a year.</p><span class="go">Open <span aria-hidden="true">&rarr;</span></span></a></li>
+    </ul>
+  </div>
+</section>
+</div>
+
+<div class="pg" data-pg="formulas" data-title="Formulas">
+<section id="formulas" class="fmsec">  <div class="wrap fmgrid">
     <div>
       <div class="kicker">Formulas</div>
       <h2>Every formula, <em>side by side.</em></h2>
       <p class="lead">Dead On IQ works out your number six ways and shows them all together, so you can see how close each one has been on your own runs.</p>
       <ul>
-        <li><b>Smart Blend</b> leans on whichever formulas have been closest.</li>
+        <li><b>Smart Blend</b> combines the other five, leaning on whichever have been closest.</li>
         <li><b>Form</b>, <b>Adaptive</b> and Smart Blend carry the AI chip: they work from your own runs and today's weather.</li>
         <li><b>Density Altitude</b>, <b>HP Correction</b> and <b>Weather Formula</b> are the classic methods, kept so you can compare.</li>
         <li>Under each card, <b>avg miss</b> shows how far off it has been over your recent runs. Tap a card to use it.</li>
@@ -580,7 +672,9 @@ html.intro .intro-s{display:flex}
     <div class="frame"><img src="img/formulas.jpg" width="784" height="566" loading="lazy" alt="The formulas screen: predicted ET 8.952, throttle stop time 2.636 with a safer stop and confidence, the delay box 0.015, and six formula cards (Smart Blend, Form, Adaptive, Density Altitude, HP Correction and Weather Formula) each with its stop time, spread and average miss over recent runs."></div>
   </div>
 </section>
+</div>
 
+<div class="pg" data-pg="pager" data-title="Pager">
 <section id="pager" class="alt">
   <div class="wrap pband">
     <div>
@@ -616,12 +710,15 @@ SENT 2:41:15P #7</pre>
           <li><b>Laptop radio</b> that plugs into USB on Windows, and a <b>pager</b> with its own screen</li>
           <li><b>Set up and paired for you</b> on your own private channel</li>
           <li><b>Extra pagers <span class="gold">$200</span> each.</b> Made for use in the US.</li>
+          <li>Sending to the pager needs the Dead On IQ license after the 7-day trial.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
+</div>
 
+<div class="pg" data-pg="features" data-title="Features">
 <section id="features">
   <div class="wrap">
     <div class="fhead">
@@ -679,11 +776,15 @@ SENT 2:41:15P #7</pre>
         <div class="kicker">Make it yours</div>
         <h2>Pick your <em>look.</em></h2>
       </div>
-      <p>Six looks for the same app, from the plain original to black and gold. New installs start in Obsidian. <span class="more">Choose on first-time setup, with the palette button at the top, or any time on App Setup.</span></p>
+      <p>Six looks for the same app, from the plain original to black and gold. New installs start in Pit Wall. <span class="more">Choose on first-time setup, with the palette button at the top, or any time on App Setup.</span></p>
     </div>
     <ul class="looks">
       <li class="look here">
         <span class="here-chip"><span class="spark" aria-hidden="true"></span>Starts here</span>
+        <div class="frame"><img src="img/look-pit.jpg" width="456" height="333" loading="lazy" alt="The Home screen in the Pit Wall look: amber numbers on carbon black with a small signal trace."></div>
+        <div class="lname"><b>Pit Wall</b><span>Amber on carbon, pit-board style</span></div>
+      </li>
+      <li class="look">
         <div class="frame"><img src="img/look-obsidian.jpg" width="456" height="329" loading="lazy" alt="The Home screen in the Obsidian look: black and gold, with the throttle stop in light gold numerals, an AI chip and the delay box."></div>
         <div class="lname"><b>Obsidian</b><span>Black and gold instrument cluster</span></div>
       </li>
@@ -696,10 +797,6 @@ SENT 2:41:15P #7</pre>
         <div class="lname"><b>Neural</b><span>Midnight glass, cyan-violet glow</span></div>
       </li>
       <li class="look">
-        <div class="frame"><img src="img/look-pit.jpg" width="456" height="333" loading="lazy" alt="The Home screen in the Pit Wall look: amber numbers on carbon black with a small signal trace."></div>
-        <div class="lname"><b>Pit Wall</b><span>Amber on carbon, pit-board style</span></div>
-      </li>
-      <li class="look">
         <div class="frame"><img src="img/look-daylight.jpg" width="456" height="343" loading="lazy" alt="The Home screen in the Daylight look: a bright white screen with dark indigo numerals."></div>
         <div class="lname"><b>Daylight</b><span>Bright, crisp and high-contrast</span></div>
       </li>
@@ -710,17 +807,43 @@ SENT 2:41:15P #7</pre>
     </ul>
   </div>
 </section>
+</div>
 
+<div class="pg" data-pg="download" data-title="Pricing">
 <section id="download">
   <div class="wrap">
-    <div class="getpanel">
-      <div class="getL">
-        <div class="kicker">Get it</div>
+    <div class="head">
+      <div class="kicker">Pricing</div>
+      <h2>What it <em>costs.</em></h2>
+    </div>
+    <div class="pricegrid">
+      <div class="kit">
+        <h3>Dead On IQ license</h3>
+        <div class="price"><b>$449</b><span>a year · no hidden upgrades</span></div>
+        <ul>
+          <li><b>Free for one race weekend</b> (7 days) with every feature on</li>
+          <li><b>One computer, up to 3 cars</b> on a single license</li>
+          <li>After the trial, predictions, the Lanes numbers and sending need a license. Your log and data always stay yours.</li>
+        </ul>
+      </div>
+      <div class="kit">
+        <h3>Dead On IQ Pager Kit</h3>
+        <div class="price"><b>$500</b><span>radios, one time · no monthly fees</span></div>
+        <ul>
+          <li><b>Laptop radio</b> that plugs into USB on Windows, and a <b>pager</b> with its own screen</li>
+          <li><b>Set up and paired for you</b> on your own private channel</li>
+          <li><b>Extra pagers $200 each.</b> Made for use in the US.</li>
+          <li>Sending to the pager needs the Dead On IQ license after the 7-day trial.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="getpanel" id="get">      <div class="getL">
+        <div class="kicker">Download</div>
         <h2>Try it free for <em>one race weekend</em></h2>
-        <p class="lead">Every feature is unlocked for 7 days. After that, predictions, the Lanes numbers and sending need a license: $449 a year, with no hidden upgrades. One computer can run up to 3 different cars on a single license. Your runs and data stay yours.</p>
+        <p class="lead">Every feature is unlocked for 7 days, and nothing is asked of you until the trial is over. After that, a license keeps the predictions, the Lanes numbers and sending going. Your runs and data stay yours.</p>
         <p class="win"><span class="tag">Available now</span> <b>Windows.</b> 64-bit Windows 10 or 11. One installer, no extra software. It tells you when an update is out and installs it in one click.</p>
         <a class="btn pri" href="https://github.com/nhildahl/stripe-sense-releases/releases/latest/download/DeadOnIQSetup.exe">Download for Windows</a>
-        <p class="fine">Version 1.0.2 · free for 7 days, no card needed.</p>
+        <p class="fine">Always the latest version · free for 7 days, no card needed.</p>
       </div>
       <div class="getR">
         <dl>
@@ -731,7 +854,9 @@ SENT 2:41:15P #7</pre>
     </div>
   </div>
 </section>
+</div>
 
+<div class="pg" data-pg="faq" data-title="FAQ">
 <section id="faq" class="alt">
   <div class="wrap faqgrid">
     <div class="head">
@@ -740,7 +865,7 @@ SENT 2:41:15P #7</pre>
     </div>
     <div>
       <details class="d1"><summary>What does "AI-driven" mean here?</summary><p>Two things, both running on your own laptop: prediction formulas scored against your own runs, with a Smart Blend that weights the closest, and a neural-network text reader for your slips. It isn't a chatbot, and your runs aren't sent anywhere to be analyzed. The delay box comes from your last few runs' reactions, not from AI. Predictions are estimates, and every dial-in comes with a confidence %.</p></details>
-      <details><summary>Can I change how it looks?</summary><p>Yes. There are six looks: Classic, Neural, Pit Wall, Daylight, Obsidian and Carbon. New installs start in Obsidian, and you can switch on first-time setup, with the palette button at the top, or on App Setup.</p></details>
+      <details><summary>Can I change how it looks?</summary><p>Yes. There are six looks: Classic, Neural, Pit Wall, Daylight, Obsidian and Carbon. New installs start in Pit Wall, and you can switch on first-time setup, with the palette button at the top, or on App Setup.</p></details>
       <details><summary>How much does it cost?</summary><p>The trial is free for one race weekend (7 days), with every feature on. After the trial a license is $449 a year. There are no hidden upgrades: everything in the software is included, and one computer can run up to 3 different cars on a single license. Your log and data always stay yours.</p></details>
       <details><summary>I race by myself. Does it still work?</summary><p>That's who it's made for. Log your run when you get back to the trailer, and Dead On IQ can send the numbers for the next round to a pager, or to your phone, by itself whenever the weather changes them, while Dead On IQ is open.</p></details>
       <details><summary>Which parts need the internet at the track?</summary><p>The predictions and slip reading run on your laptop without the internet. The pager sends the numbers over its own radio link, not the internet: two small radios on a private channel. The pager kit plugs into the Windows version over USB. The Android pager (over Bluetooth) hasn't been tested on a phone yet. Phone messages (through the free ntfy service) and cloud weather accounts need a connection, like track Wi-Fi or a hotspot.</p></details>
@@ -749,6 +874,7 @@ SENT 2:41:15P #7</pre>
     </div>
   </div>
 </section>
+</div>
 </main>
 
 <footer>
@@ -773,13 +899,13 @@ SENT 2:41:15P #7</pre>
   function lock(on){page.forEach(function(n){if(n){if(on)n.setAttribute("inert","");else n.removeAttribute("inert")}})}
   function close(){
     try{sessionStorage.setItem("doiq-intro","1")}catch(e){}
-    el.classList.add("go"); root.className=root.className.replace(/\bintro\b/,"").trim(); lock(false); window.scrollTo(0,0);
+    el.classList.add("go"); root.className=root.className.replace(/\bintro\b/,"").trim(); lock(false); if(window.doiqFocusHead)window.doiqFocusHead();
     setTimeout(function(){el.style.display="none"},700);
     document.removeEventListener("keydown",key);
   }
   function key(e){if(e.key==="Enter"||e.key==="Escape"||e.key===" "){e.preventDefault();close()}}
   if(!/\bintro\b/.test(root.className)){el.style.display="none";return}
-  lock(true); btn.addEventListener("click",close); document.addEventListener("keydown",key);
+  lock(true); try{btn.focus({preventScroll:true})}catch(e){} btn.addEventListener("click",close); document.addEventListener("keydown",key);
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(reduce){cells.forEach(function(c){c.classList.add("lk")});btn.classList.add("on");btn.focus();return}
   // each readout spins through random digits, then locks left to right at its real value
@@ -799,6 +925,58 @@ SENT 2:41:15P #7</pre>
   requestAnimationFrame(frame);
   // the button can be used at any point after a moment, so nobody waits on the animation
   setTimeout(function(){btn.classList.add("on")},1200);
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement; if(!/\bjs\b/.test(root.className))return;
+  var pgs=[].slice.call(document.querySelectorAll(".pg")), links=[].slice.call(document.querySelectorAll(".top nav a[data-pg]"));
+  var nav=document.querySelector(".top nav"), baseTitle=document.title, started=false, current=null;
+  var ALIAS={pricing:"download",price:"download",prices:"download"};
+  function jump(top){try{window.scrollTo({top:top,left:0,behavior:"instant"})}catch(e){window.scrollTo(0,top)}}
+  function heading(p){return p.querySelector("h1,h2,h3")}
+  // reading focus goes to the page heading after a click (never while the intro is open)
+  function focusHead(){
+    if(!current||root.classList.contains("intro"))return;
+    var hd=heading(current); if(!hd)return;
+    hd.setAttribute("tabindex","-1"); try{hd.focus({preventScroll:true})}catch(e){}
+  }
+  window.doiqFocusHead=focusHead;
+  function show(){
+    var id=""; try{id=decodeURIComponent(location.hash.slice(1))}catch(e){}
+    if(id&&!document.getElementById(id)&&ALIAS[id.toLowerCase()])id=ALIAS[id.toLowerCase()];
+    var t=id?document.getElementById(id):null, pg=t&&t.closest?t.closest(".pg"):null;
+    if(!pg)pg=document.querySelector('.pg[data-pg="home"]');
+    var name=pg.getAttribute("data-pg"); current=pg;
+    pgs.forEach(function(p){
+      p.classList.toggle("on",p===pg);
+      var hd=heading(p); if(hd){if(p===pg&&name!=="home")hd.setAttribute("aria-level","1");else hd.removeAttribute("aria-level")}
+    });
+    links.forEach(function(a){
+      if(a.getAttribute("data-pg")===name){a.setAttribute("aria-current","page");
+        if(nav&&nav.scrollWidth>nav.clientWidth)nav.scrollLeft=a.offsetLeft-(nav.clientWidth-a.offsetWidth)/2}
+      else a.removeAttribute("aria-current")});
+    document.title=name==="home"?baseTitle:pg.getAttribute("data-title")+" \u00b7 Dead On IQ";
+    // a link to something part-way down a page (such as #looks or #get) scrolls there; every other route starts at the top
+    var sub=t&&t!==pg&&t!==pg.querySelector("section")?t:null;
+    if(sub){var y=sub.getBoundingClientRect().top+window.pageYOffset-(document.querySelector("header.top").offsetHeight+8);jump(Math.max(0,y))}
+    else jump(0);
+    if(started&&!sub)focusHead();
+    started=true;
+  }
+  window.addEventListener("hashchange",show);
+  // a link to the page you are already on goes back to its top (but a new-tab click is left alone)
+  document.addEventListener("click",function(e){
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(a&&a.hash&&a.hash===location.hash){e.preventDefault();show()}
+  });
+  // a tab reached with the keyboard scrolls fully into view (clear of the edge fade) in the swipeable tab row
+  if(nav)nav.addEventListener("focusin",function(e){
+    var a=e.target.closest&&e.target.closest("a");
+    if(a&&nav.scrollWidth>nav.clientWidth){try{a.scrollIntoView({inline:"nearest",block:"nearest"})}catch(x){}}
+  });
+  show();
 })();
 </script></body>
 </html>
