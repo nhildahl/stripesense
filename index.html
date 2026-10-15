@@ -173,9 +173,19 @@ section::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8
 .also-short b{color:var(--ink);font-weight:700}
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:26px}
 .shots figure{margin:0}
-.shots figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:14px;font-size:14.5px;color:var(--mute)}
-.shots figcaption b{font:600 22px/1 var(--serif);color:var(--ink);letter-spacing:.01em}
+.shots figcaption,.rc figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:14px;font-size:14.5px;color:var(--mute)}
+.shots figcaption b,.rc figcaption b{font:600 22px/1 var(--serif);color:var(--ink);letter-spacing:.01em}
 .shots-note{margin-top:14px}
+.rc+.shots-note{margin-top:22px}
+/* Run Completion band: text beside one tall screenshot; stacks under 900px */
+.rc{margin:34px 0 0;padding-top:30px;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:22px 56px;align-items:center}
+.rc figure{margin:0}
+.rc .rc-text{min-width:0}
+.rc .kicker .tag{padding:2px 7px;letter-spacing:.12em}
+.rc h3{font-size:32px;line-height:1.06;margin:0 0 16px}
+.rc p{margin:0 0 14px;color:var(--ink2);font-size:17px;line-height:1.6}
+.rc .rc-fine{margin:0;color:var(--mute);font-size:15px;line-height:1.55}
+.rc .frame.sm img{aspect-ratio:auto;height:auto;object-fit:fill}
 .fmsec{border-top:1px solid var(--line)}
 .fmgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:center}
 .fmgrid ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
@@ -280,6 +290,7 @@ footer .made{margin:12px 0 0;font-size:14px;max-width:22em}
   .readouts li{padding:14px 18px;gap:12px}
   .readouts b{font-size:48px}
   .tile{padding-left:20px;padding-right:20px}
+  .rc{grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:22px 36px}
   .looks{gap:14px}
   .pband{grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:28px 40px}
   .pband .kitwrap{grid-column:1 / -1}
@@ -287,6 +298,8 @@ footer .made{margin:12px 0 0;font-size:14px;max-width:22em}
 @media (max-width:960px){
   section{padding:42px 0}
   .tiles{grid-template-columns:1fr 1fr;gap:30px 36px}
+  .rc{grid-template-columns:minmax(0,1fr);gap:20px}
+  .rc figure{max-width:560px}
   .tile,.tile.t1,.tile.t4{padding:18px 0 0;border-left:0;border-top:1px solid var(--line)}
   .wx{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:12px 36px}
   .also{margin-top:8px;padding-top:8px}
@@ -361,6 +374,13 @@ footer .made{margin:12px 0 0;font-size:14px;max-width:22em}
   .shots figcaption>span:last-child:not(.tag){display:none}
   .shots figcaption b{font-size:20px}
   .shots-note{margin-top:8px}
+  .rc+.shots-note{margin-top:16px}
+  .rc{gap:18px;margin-top:24px;padding-top:20px}
+  .rc h3{font-size:26px;margin-bottom:10px}
+  .rc p{font-size:15.5px;line-height:1.55;margin-bottom:10px}
+  .rc .rc-fine{font-size:14px}
+  .rc figcaption{margin-top:12px}
+  .rc figcaption b{font-size:20px}
   .looks-head{margin-bottom:22px}
   .looks-head p .more{display:none}
   .looks{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;gap:14px;margin:0 -16px;padding:14px 16px 10px;scrollbar-width:thin;scrollbar-color:rgba(255,180,0,.4) transparent}
@@ -445,7 +465,7 @@ section::after{transform:none;border-radius:0;width:9px;height:9px;margin-left:-
 .tile h3{font-size:21px}
 .wk,.wx h4,.also dt,.getR dt{font-family:var(--label)}
 .wx h3{font-size:25px}
-.shots figcaption b,.lname b{font:700 21px/1.05 var(--label);text-transform:uppercase;letter-spacing:.05em}
+.shots figcaption b,.rc figcaption b,.lname b{font:700 21px/1.05 var(--label);text-transform:uppercase;letter-spacing:.05em}
 .look .frame{border-radius:3px}
 .look .frame img{border-radius:1px}
 .look.here .frame{border-color:#ffb400;box-shadow:0 0 0 1px rgba(255,180,0,.35),0 0 40px -10px rgba(255,180,0,.5)}
@@ -738,7 +758,7 @@ SENT 2:41:15P #7</pre>
     <div class="tiles">
       <div class="tile t1"><div class="mark"><span class="ai"><span class="spark" aria-hidden="true"></span>AI</span></div><h3>AI-driven predictions</h3><p>Dial-in or throttle stop from your runs and the weather, with a confidence % on every dial-in. <span class="more">A Smart Blend weights the closest of five formulas. </span>The delay box comes from your last few runs' reactions, newest counted most, not from AI.</p></div>
       <div class="tile t2"><div class="mark"><span class="ai"><span class="spark" aria-hidden="true"></span>AI</span></div><h3>AI slip reading</h3><p>An AI text reader on your own device reads your time slip: both lanes and the win light, so the win or loss is filled in when the slip shows one. Numbers it isn't sure of are highlighted: check them before you save.</p></div>
-      <div class="tile t3"><div class="mark"><span class="tag">New</span></div><h3>Race Compare</h3><p>See who took the stripe and by how many feet and inches, estimated from the slips.<span class="more"> Watch both cars from above, or jump to any marker down the track.</span></p></div>
+      <div class="tile t3"><div class="mark"><span class="tag">New</span></div><h3>Race Compare</h3><p>See who took the stripe and by how many feet and inches, estimated from the slips.<span class="more"> Watch both cars from above, or jump to any marker down the track.</span> Braked at the end? Run Completion shows what the car would have run.</p></div>
       <div class="tile t4"><div class="mark"><span class="tag">New</span></div><h3>Know the field</h3><p>Type or paste the ladder and qualifying sheets posted at the track, or scan a ladder photo (new, still being tested: check every row).<span class="more"> It remembers each racer and how they run, and shows who you race next.</span></p></div>
     </div>
     <div class="wx" role="group" aria-label="Weather stations">
@@ -758,12 +778,25 @@ SENT 2:41:15P #7</pre>
     <p class="also-short"><b>Also:</b> class presets in ¼ or ⅛ mile; a built-in list of US drag strips, add your own if yours is missing; one computer runs up to 3 cars on one license.</p>
     <div class="shots" role="group" aria-label="Screenshots">
       <figure>
-        <div class="frame sm"><img src="img/finish.jpg" width="720" height="548" loading="lazy" alt="Race Compare: the result card saying Delgado wins, you took the stripe by 13 ft 11¼ in but broke out, and below it both cars at the finish line on the track chart."></div>
-        <figcaption><b>Race Compare</b><span>Who took the stripe, and who broke out</span></figcaption>
+        <div class="frame sm"><img src="img/finish.jpg" width="720" height="566" loading="lazy" alt="Race Compare: the result card saying you win, you took the stripe by 2 ft 4 in, and a brake box under it saying you hit the brakes and the car would have run 8.878 at 174.4 mph where the slip says 8.922 at 167.9, with the start of the track chart below."></div>
+        <figcaption><b>Race Compare</b><span>Who took the stripe, and did you brake</span></figcaption>
       </figure>
       <figure>
         <div class="frame sm"><img src="img/field.jpg" width="720" height="552" loading="lazy" alt="Posted sheets and the field: a ladder and two qualifying sheets added from the track, and a racers list with each racer's average reaction time, ET and speed."></div>
         <figcaption><b>The field</b><span>Every racer on the posted sheets</span></figcaption>
+      </figure>
+    </div>
+    <div class="rc" aria-labelledby="rc-h">
+      <div class="rc-text">
+        <div class="kicker">Run Completion<span class="tag">New</span></div>
+        <h3 id="rc-h">Braked at the stripe? <em class="gold">Count the run anyway.</em></h3>
+        <p>Race the stripe and you brake or lift near the end, so the slip shows a slower ET and a lower trap speed than the car really had. Dead On IQ checks each slip against your own earlier runs of that car and says if it looks like you braked.</p>
+        <p>You answer yes or no, and on a yes it works out the ET and MPH the car would have run, with a plus-or-minus. Those numbers go into your predictions at a lower weight, so a braked run does not teach it your car is slow. If the check is unsure of them, they are left out, and you can untick them yourself.</p>
+        <p class="rc-fine">It asks in a box on the Race Compare result, when you log a run, and in the run editor. You can say yes even if it did not notice. It needs four earlier full runs of the car on the same track length to work from. It is statistics on your own runs, not AI.</p>
+      </div>
+      <figure>
+        <div class="frame sm"><img src="img/complete.jpg" width="720" height="921" loading="lazy" alt="The Run Completion screen: you answered yes, I hit the brakes; a table of three checks against your normal runs, with trap speed 6.4 and 5.8 mph low and flagged as braking; then what the car would have run, ET 8.878 and 174.4 mph against a slip of 8.922 and 167.9 mph, and a tick box to use the completed numbers when learning your car."></div>
+        <figcaption><b>Run Completion</b><span>What the car would have run</span></figcaption>
       </figure>
     </div>
     <p class="foot shots-note"><span class="spark" aria-hidden="true"></span>Screens shown in the Pit Wall look.</p>
